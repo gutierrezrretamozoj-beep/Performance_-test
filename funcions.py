@@ -1,5 +1,5 @@
 students_list = []
-
+runnig = True
 def menu():
    
     while True:
@@ -12,13 +12,13 @@ def menu():
      print("6. exit")
      
      opcion = input("Enter an option between (1-6): ")
-     while not opcion.isdigit() or int(opcion) <1 >6 or opcion == "": 
+     while not opcion.isdigit() or int(opcion) <1 or int(opcion)>6 or opcion == "": 
          print("Error: The option cannot be empty, contain letters, or be out of range.")
          opcion = input("Enter an option between (1-6): ")
-         opcion = int(opcion)
+menu()     
      
     
-def register_new_students(students, ID, name, age, course_program, status, opcion):
+def register_new_students(students_list, ID, name, age, course_program, status, opcion):
     
     
     if opcion == "1":
@@ -126,4 +126,6 @@ def  Delete_students(students_list, opcion, name, registered_students):
 def exit(opcion):
     if opcion == "6":
         print("leaving the program")
+        
+        
     
