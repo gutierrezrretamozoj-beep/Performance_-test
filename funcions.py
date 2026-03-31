@@ -9,7 +9,7 @@ def menu():
      print("3. Search student")
      print("4. Update a student's information.")
      print("5. Delete students.")
-     print("6. Go out")
+     print("6. exit")
      
      opcion = input("Enter an option between (1-6): ")
      while not opcion.isdigit() or int(opcion) <1 >6 or opcion == "": 
@@ -50,8 +50,8 @@ def register_new_students(students, ID, name, age, course_program, status, opcio
          course_program = input("Enter the program name: ")
          continue
      
-    status = input("(1.active/2.inactive): ")
-    while not status.isdigit() or int(status) < 1 >2 or status == "":
+     status = input("(1.active/2.inactive): ")
+     while not status.isdigit() or int(status) < 1 >2 or status == "":
         print("Error: The status cannot be empty or contain letters.")
         status = input("(1.active/2.inactive): ")
         status = int(status)
@@ -64,7 +64,7 @@ def register_new_students(students, ID, name, age, course_program, status, opcio
         "course_program": course_program,
         "status": status 
     }
-    students_list.append(students)
+    students_list.append(registered_students)
     print("added student")
     advance = input("Do you want to add another student (yes/no): ")
     
@@ -74,9 +74,9 @@ def Check_the_student_list(students_list, opcion):
         if not students_list:
          print("There are no registered students yet: ")
          
-    else: 
-        print("His students are:")
-        for registered_students in students_list:
+        else: 
+         print("His students are:")
+         for registered_students in students_list:
             print("ID:", registered_students ["ID"])
             print("NAME:", registered_students ["name"])
             print("AGE:", registered_students ["age"])
@@ -96,9 +96,34 @@ def Search_student(student_list, opcion):
          print("ID:", registerd_students["id"], registerd_students["name"])
  
  
-def Update_a_students_information(student_list, opcion):
-            
-         
-     
-     
+def Update_a_students_information(student_list, opcion, registered_students):
+   if opcion =="4":
+     search = input("Enter the name of the student you want to change: ")
+     while search == "" or search.isdigit():
+        print("Error: The name cannot be empty or a number.")
+        search = input("Enter the name of the student you want to change: ")  
+        continue    
+     for search in student_list:
+        new = input("enter new name: ")
+        index = student_list.index(search)
+        student_list[index] = new 
+     else: 
+        print("the name does not exist.")
         
+def  Delete_students(students_list, opcion, name, registered_students):
+    if opcion == "5":
+        
+     delete = input("Enter the name of the student you want to delete: ")
+    print("student successfully removed")
+    if delete in registered_students:
+        value_removed = registered_students.pop(name)
+        print(f"student removed: {name}, {value_removed}")
+    else: 
+        print("the name does not exist")
+
+    print("final students:", registered_students)    
+    
+def exit(opcion):
+    if opcion == "6":
+        print("leaving the program")
+    
